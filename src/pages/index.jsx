@@ -1,0 +1,11 @@
+export { default as Heatmap } from './Heatmap';
+export { default as Graph } from './Graph';
+export { default as PoliceOfficer } from './PoliceOfficer';
+export { default as Dispatcher } from './Dispatcher';
+export { default as PoliceStation } from './PoliceStation';
+export { default as WantedCriminals } from './WantedCriminals';
+export { default as Reports } from './Reports';
+export { default as Feedback } from './Feedback';
+export { default as ColorPicker } from './ColorPicker';
+export { default as EPPDA } from './EPPDA';
+export { default as CreateDispatcher } from './CreateDispatcher';
