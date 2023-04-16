@@ -2,7 +2,7 @@ import mongoose, { Schema } from "mongoose";
 const schema = mongoose.Schema;
 
 const OfficerSchema = new schema({
-    username:{
+    name:{
         type: String,
         required: true,
         minlength: 5
@@ -18,6 +18,14 @@ const OfficerSchema = new schema({
         required: true,
     
     },
+    password:{
+        type: String,
+        required: true,
+    },
+    Location:{
+        type: String,
+        required: true,
+    }
    
 });
 

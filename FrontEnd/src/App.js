@@ -71,7 +71,7 @@ const App = () => {
                 {/* pages  */}
                 <Route path="/officer" element={<PoliceOfficer />} />
                 <Route path="/dispatcher" element={<Dispatcher />} />
-                <Route path="/police%20station" element={<PoliceStation />} />
+                <Route path="/station" element={<PoliceStation />} />
 
                 {/* statistics  */}
                 <Route path="/heatmap" element={<Heatmap />} />

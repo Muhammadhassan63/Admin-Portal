@@ -38,21 +38,22 @@ const PoliceOfficer = () => {
   const [showCreateForm, setShowCreateForm] = useState(false);
   const navigate = useNavigate();
 //check link
-  useEffect(() => {
-    axios.get("http://localhost:3001/api/policeOfficers").then((response) => {
-      setPoliceOfficers(response.data);
+useEffect(() => {
+  axios.get("http://localhost:5000/officer").then((response) => {
+    setPoliceOfficers(response.data);
+    
+  });
+}, []);
+
+const handleDelete = (id) => {
+  axios.delete(`http://localhost:5000/officer/${id}`)
+
+    .then((response) => {
+      setPoliceOfficers(
+        policeOfficers.filter((officer) => officer._id !== id)
+      );
     });
-  }, []);
-//check link
-  const handleDelete = (id) => {
-    axios
-      .delete(`http://localhost:3001/api/policeOfficers/${id}`)
-      .then((response) => {
-        setPoliceOfficers(
-          policeOfficers.filter((officer) => officer._id !== id)
-        );
-      });
-  };
+};
 
   const handleUpdate = (id) => {
     navigate(`/policeOfficers/${id}/edit`);
