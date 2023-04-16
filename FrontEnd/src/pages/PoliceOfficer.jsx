@@ -14,22 +14,22 @@ const PoliceOfficer = () => {
   const [policeOfficers, setPoliceOfficers] = useState([
     {
       _id: 1,
-      name: "Bani Gala",
-      address: "Address 1",
+      name: "Ali",
+      email: "xyz.gmail",
       phone: "(051) 9330977",
       location: "faizabad",
     },
     {
       _id: 2,
-      name: "Police Station 2",
-      address: "Address 2",
+      name: "Haris",
+      email: "xyz2.gmail",
       phone: "555-5678",
       location: "faizabad",
     },
     {
       _id: 3,
-      name: "Police Station 3",
-      address: "Address 3",
+      name: "Anis",
+      email: "xyz3.gmail",
       phone: "555-9012",
       location: "faizabad",
     },
@@ -37,29 +37,29 @@ const PoliceOfficer = () => {
 
   const [showCreateForm, setShowCreateForm] = useState(false);
   const navigate = useNavigate();
-
+//check link
   useEffect(() => {
-    axios.get("http://localhost:3001/api/police-stations").then((response) => {
+    axios.get("http://localhost:3001/api/policeOfficers").then((response) => {
       setPoliceOfficers(response.data);
     });
   }, []);
-
+//check link
   const handleDelete = (id) => {
     axios
-      .delete(`http://localhost:3001/api/police-stations/${id}`)
+      .delete(`http://localhost:3001/api/policeOfficers/${id}`)
       .then((response) => {
         setPoliceOfficers(
-          policeOfficers.filter((station) => station._id !== id)
+          policeOfficers.filter((officer) => officer._id !== id)
         );
       });
   };
 
   const handleUpdate = (id) => {
-    navigate(`/police-stations/${id}/edit`);
+    navigate(`/policeOfficers/${id}/edit`);
   };
 
   const handleCreate = () => {
-    navigate("/police-stationcreate");
+    navigate("/createofficer");
   };
 
   const formatHeaderText = (headerText) => (
@@ -82,60 +82,37 @@ const PoliceOfficer = () => {
       {showCreateForm && (
         <CreatePoliceStation setShowCreateForm={setShowCreateForm} />
       )}
-      <GridComponent dataSource={policeOfficers} height={400}>
-        <ColumnsDirective >
-          <ColumnDirective
-            field="name"
-            headerText="Name"
-            headerTemplate={() => (
-              <div className="font-bold text-black text-base">Name</div>
-            )}
-          />
 
-          <ColumnDirective field="address"
-            headerText="Address"
-            headerTemplate={() => (
-              <div className="font-bold text-black text-base">Address</div>
-            )}/>
-          <ColumnDirective field="phone"
-            headerText="Phone"
-            headerTemplate={() => (
-              <div className="font-bold text-black text-base">Phone</div>
-            )}/>
-
-          <ColumnDirective field="location"
-            headerText="Location"
-            headerTemplate={() => (
-              <div className="font-bold text-black text-base">Location</div>
-            )}/>
-          <ColumnDirective
-            
-            headerText="Actions"
-            headerTemplate={() => (
-              <div className="font-bold text-black text-base ">Actions</div>
-            )}
-            template={(data) => (
-              <div className="flex space-x-2">
+<div className="flex flex-col space-y-4">
+        {policeOfficers.map((officer) => (
+          <div key={officer._id} className="bg-gray-100 p-4 rounded shadow-md">
+            <div className="flex justify-between">
+              <div className="font-bold text-lg">{officer.username}</div>
+              <div className="flex space-x-4">
                 <button
                   type="button"
-                  className="bg-blue-500 hover:bg-blue-700 text-white bold py-2 px-2 rounded"
-                  onClick={() => handleUpdate(data._id)}
+                  className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+                  onClick={() => handleUpdate(officer._id)}
                 >
                   Update
                 </button>
                 <button
                   type="button"
-                  className="bg-red-500 hover:bg-red-700 text-white bold py-2 px-2 rounded"
-                  onClick={() => handleDelete(data._id)}
+                  className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
+                  onClick={() => handleDelete(officer._id)}
                 >
                   Delete
                 </button>
               </div>
-            )}
-          />
-        </ColumnsDirective>
-      </GridComponent>
+            </div>
+            <div>{officer.name}</div>
+            <div>{officer.email}</div>
+            <div>{officer.phone}</div>
+          </div>
+        ))}
+      </div>
     </div>
+    
   );
 };
 

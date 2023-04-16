@@ -36,7 +36,7 @@ const CreatePoliceOfficer = () => {
               name="name"
               type="text"
               className="border-2 rounded-md border-gray-300 p-2 "
-              placeholder="Bani Gala "
+              placeholder="Ali"
               required
             />
           </div>
@@ -62,7 +62,7 @@ const CreatePoliceOfficer = () => {
               name="email"
               type="email"
               className="border-2 rounded-md border-gray-300 p-2"
-              placeholder="BaniGalaStation@example.com"
+              placeholder="ali1@example.com"
               required
             />
           </div>
