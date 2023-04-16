@@ -40,8 +40,8 @@ const Dispatcher = () => {
   }, []);
 
   const handleDelete = (id) => {
-    axios
-      .delete(`http://localhost:5000/dispatchers/${id}`)
+    axios.delete(`http://localhost:5000/dispatcher/${id}`)
+
       .then((response) => {
         setDispatchers(
           dispatchers.filter((dispatcher) => dispatcher._id !== id)
@@ -50,7 +50,7 @@ const Dispatcher = () => {
   };
 
   const handleUpdate = (id) => {
-    navigate(`/dispatchers/${id}/edit`);
+    navigate(`/dispatchers/update/${id}`);
   };
 
   const handleCreate = () => {

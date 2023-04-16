@@ -3,6 +3,7 @@ import cors from 'cors';
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 import dispatcherRoute from './Routes/dispatcher.js';
+import officerRoute from './Routes/policeofficer.js';
 // Configuring the server
 dotenv.config();
 const app = express();
@@ -13,7 +14,7 @@ app.use(cors());
 // app.use("/admin", adminRoutes);
 // app.use("/policestation", policestationRoutes);
 app.use("/dispatcher", dispatcherRoute);
-
+app.use("/officer", officerRoute);
 
 //DB connection
 const PORT = process.env.PORT || 9000;
