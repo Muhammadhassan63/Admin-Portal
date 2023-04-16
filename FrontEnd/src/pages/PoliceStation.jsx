@@ -1,9 +1,5 @@
 import { useState, useEffect } from "react";
-import {
-  GridComponent,
-  ColumnsDirective,
-  ColumnDirective,
-} from "@syncfusion/ej2-react-grids";
+
 import { Header } from "../components";
 import { useNavigate } from "react-router-dom";
 
@@ -46,7 +42,7 @@ const PoliceStation = () => {
       .delete(`http://localhost:3001/api/police-stations/${id}`)
       .then((response) => {
         setPoliceStations(
-          policeStations.filter((station) => station._id !== id)
+          policeStations.filter((policestation) => policestation._id !== id)
         );
       });
   };
@@ -79,54 +75,35 @@ const PoliceStation = () => {
       {showCreateForm && (
         <CreatePoliceStation setShowCreateForm={setShowCreateForm} />
       )}
-      <GridComponent dataSource={policeStations} height={400}>
-        <ColumnsDirective >
-          <ColumnDirective
-            field="name"
-            headerText="Name"
-            headerTemplate={() => (
-              <div className="font-bold text-black text-base">Name</div>
-            )}
-          />
-
-          <ColumnDirective field="address"
-            headerText="Address"
-            headerTemplate={() => (
-              <div className="font-bold text-black text-base">Address</div>
-            )}/>
-          <ColumnDirective field="phone"
-            headerText="Phone"
-            headerTemplate={() => (
-              <div className="font-bold text-black text-base">Phone</div>
-            )}/>
-          <ColumnDirective
-            
-            headerText="Actions"
-            headerTemplate={() => (
-              <div className="font-bold text-black text-base ">Actions</div>
-            )}
-            template={(data) => (
+      <div className="flex flex-col space-y-4">
+        {policeStations.map((policestation) => (
+          <div key={policestation._id} className="bg-gray-100 p-4 rounded">
+            <div className="flex justify-between">
+              <div className="font-bold text-lg">{policestation.username}</div>
               <div className="flex space-x-4">
                 <button
                   type="button"
                   className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-                  onClick={() => handleUpdate(data._id)}
+                  onClick={() => handleUpdate(policestation._id)}
                 >
                   Update
                 </button>
                 <button
                   type="button"
                   className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
-                  onClick={() => handleDelete(data._id)}
+                  onClick={() => handleDelete(policestation._id)}
                 >
                   Delete
                 </button>
               </div>
-            )}
-          />
-        </ColumnsDirective>
-      </GridComponent>
+            </div>
+            <div>{policestation.name}</div>
+            <div>{policestation.address}</div>
+          </div>
+        ))}
+      </div>
     </div>
+      
   );
 };
 

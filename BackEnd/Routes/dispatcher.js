@@ -15,4 +15,23 @@ router.route('/add').post((req,res) => {
         .then(()=>res.json("Dispatcher added!!!"))
         .catch(err=>res.status(400).json('Error: '+err))
 });
+router.route('/:id').delete((req, res) => {
+  DispatcherOfficer.findByIdAndDelete(req.params.id)
+    .then(() => res.json('Dispatcher deleted.'))
+    .catch(err => res.status(400).json('Error: ' + err));
+});
+router.route('/update/:id').post((req, res) => {
+  DispatcherOfficer.findById(req.params.id)
+    .then(DisptacherOffice => {
+      DisptacherOffice.username = req.body.username;
+      DisptacherOffice.phone = req.body.phone;
+      DisptacherOffice.email = req.body.email;
+   
+
+      DisptacherOffice.save()
+        .then(() => res.json('Dispatcherupdated!'))
+        .catch(err => res.status(400).json('Error: ' + err));
+    })
+    .catch(err => res.status(400).json('Error: ' + err));
+});
 export default router;
