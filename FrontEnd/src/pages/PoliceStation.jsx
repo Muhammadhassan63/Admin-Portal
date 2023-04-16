@@ -99,6 +99,7 @@ const PoliceStation = () => {
             </div>
             <div>{policestation.name}</div>
             <div>{policestation.address}</div>
+            <div>{policestation.phone}</div>
           </div>
         ))}
       </div>
