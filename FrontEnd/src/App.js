@@ -10,6 +10,7 @@ import './App.css';
 import { useStateContext } from './contexts/ContextProvider';
 import CreatePoliceStation from './pages/CreatePoliceStation';
 import CreatePoliceOfficer from './pages/CreatePoliceOfficer';
+import UploadWantedCriminals from './pages/UploadWantedCriminals';
 
 const App = () => {
   const { setCurrentColor, setCurrentMode, currentMode, activeMenu, currentColor, themeSettings, setThemeSettings } = useStateContext();
@@ -71,13 +72,13 @@ const App = () => {
                 {/* pages  */}
                 <Route path="/officer" element={<PoliceOfficer />} />
                 <Route path="/dispatcher" element={<Dispatcher />} />
-                <Route path="/police%20station" element={<PoliceStation />} />
+                <Route path="/station" element={<PoliceStation />} />
 
                 {/* statistics  */}
                 <Route path="/heatmap" element={<Heatmap />} />
                 <Route path="/graph" element={<Graph />} />
                 <Route path="/dispatchercreate" element={<CreateDispatcher />} />
-                <Route path="/police-stationcreate" element={<CreatePoliceStation />} />
+                <Route path="/stationcreate" element={<CreatePoliceStation />} />
 
 
                 <Route path="/feedback" element={<Feedback />} />
@@ -85,6 +86,7 @@ const App = () => {
                 <Route path="/reports" element={<Reports />} />
                 <Route path="/color-picker" element={<ColorPicker />} />
                 <Route path="/createofficer" element={<CreatePoliceOfficer />} />
+                <Route path="/uploadcriminals" element={<UploadWantedCriminals />} />
 
          
               </Routes>

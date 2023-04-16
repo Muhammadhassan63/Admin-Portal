@@ -6,7 +6,7 @@ const CreatePoliceStation = () => {
     const navigate = useNavigate();
   
     const handleBackClick = () => {
-      navigate('/police%20station');
+      navigate('/station');
     };
 
   return (

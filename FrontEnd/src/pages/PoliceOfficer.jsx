@@ -1,9 +1,4 @@
 import { useState, useEffect } from "react";
-import {
-  GridComponent,
-  ColumnsDirective,
-  ColumnDirective,
-} from "@syncfusion/ej2-react-grids";
 import { Header } from "../components";
 import { useNavigate } from "react-router-dom";
 

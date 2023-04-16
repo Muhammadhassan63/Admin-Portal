@@ -26,7 +26,7 @@ export const links = [
         icon: <IoMdContacts />,
       },
       {
-        name: 'police station',
+        name: 'station',
         icon: <MdOutlineLocalPolice />,
       },
     ],

@@ -48,11 +48,11 @@ const PoliceStation = () => {
   };
 
   const handleUpdate = (id) => {
-    navigate(`/police-stations/${id}/edit`);
+    navigate(`/stations/${id}/edit`);
   };
 
   const handleCreate = () => {
-    navigate("/police-stationcreate");
+    navigate("/stationcreate");
   };
 
   const formatHeaderText = (headerText) => (
