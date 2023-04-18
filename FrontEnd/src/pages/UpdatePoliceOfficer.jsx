@@ -3,7 +3,7 @@ import { Header } from "../components";
 import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 
-const UpdateDispatcher = () => {
+const UpdatePoliceOfficer = () => {
   const { id } = useParams();
   const navigate = useNavigate();
 
@@ -13,7 +13,7 @@ const UpdateDispatcher = () => {
   const [password, setPassword] = useState("");
 
   useEffect(() => {
-    axios.get(`http://localhost:5000/dispatcher/${id}`).then((response) => {
+    axios.get(`http://localhost:5000/officer/${id}`).then((response) => {
       const { name, phone, email } = response.data;
       setName(name);
       setPhone(phone);
@@ -22,7 +22,7 @@ const UpdateDispatcher = () => {
   }, [id]);
 
   const handleBackClick = () => {
-    navigate("/dispatcher");
+    navigate("/officer");
   };
 
   const handleSubmit = async (e) => {
@@ -30,14 +30,14 @@ const UpdateDispatcher = () => {
     console.log("handleSubmit called");
 
     try {
-      await axios.patch(`http://localhost:5000/dispatcher/update/${id}`, {
+      await axios.patch(`http://localhost:5000/officer/update/${id}`, {
         name,
-        phone,
         email,
+        phone,
         password,
       });
 
-      navigate("/dispatcher");
+      navigate("/officer");
     } catch (error) {
       console.error(error);
     }
@@ -45,7 +45,7 @@ const UpdateDispatcher = () => {
 
   return (
     <div className="m-2 md:m-10 mt-24 p-2 md:p-10 bg-white rounded-3xl">
-      <Header title="Update Dispatcher" />
+      <Header title="Update Police Officer" />
       <div className="bg-white rounded-lg p-8">
         <div className="flex justify-end mb-4">
           <button
@@ -119,7 +119,7 @@ const UpdateDispatcher = () => {
         type="submit"
         className="bg-blue-500 text-white font-bold px-5 py-2 rounded-md mt-4"
       >
-        Update Dispatcher
+        Update PoliceOfficer
       </button>
     </form>
   </div>
@@ -127,4 +127,4 @@ const UpdateDispatcher = () => {
 );
 };
 
-export default UpdateDispatcher;
+export default UpdatePoliceOfficer;

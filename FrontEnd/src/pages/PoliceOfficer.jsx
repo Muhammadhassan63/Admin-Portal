@@ -51,7 +51,7 @@ const handleDelete = (id) => {
 };
 
   const handleUpdate = (id) => {
-    navigate(`/policeOfficers/${id}/edit`);
+    navigate(`/officer/update/${id}`);
   };
 
   const handleCreate = () => {

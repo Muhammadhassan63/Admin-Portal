@@ -67,9 +67,9 @@ const WantedCriminals = () => {
               </div>
             </div>
             
-            <div className="mt-4"><img src={criminal.image} alt={`Photo of ${criminal.name}`} className="w-32 h-32 rounded-lg" /></div>
+            <div className="mt-4"><img src={`data:image/jpeg;base64,${criminal.image}`} alt={`Photo of ${criminal.name}`} className="w-32 h-32 rounded-lg" /></div>
             <div className="font-bold text-lg mt-2">Name: <span className="font-light">{criminal.name}</span></div>
-            <div className="font-bold text-lg mt-2">Description: <span className="font-light">{criminal.desc}</span></div>
+            <div className="font-bold text-lg mt-2">Description: <span className="font-light">{criminal.description}</span></div>
 
           </div>
         ))}
@@ -78,4 +78,8 @@ const WantedCriminals = () => {
   );
 };
 
+<<<<<<< HEAD
 export default WantedCriminals
+=======
+export default WantedCriminals
+>>>>>>> 33b888126b882e075f1f0d718eaf43ac852748ba

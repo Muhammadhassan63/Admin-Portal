@@ -72,12 +72,11 @@
             >
               Description
             </label>
-            <input
-              className="shadow appearance-none border rounded w-1/2 py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-              id="description"
-              type="text"
-              value={description}
-              onChange={(event) => setDescription(event.target.value)}
+            <textarea
+                className="shadow appearance-none border rounded w-1/2 py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                id="description"
+                value={description}
+                onChange={(event) => setDescription(event.target.value)}
             />
           </div>
 
