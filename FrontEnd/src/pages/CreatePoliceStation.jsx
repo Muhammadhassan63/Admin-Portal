@@ -1,5 +1,6 @@
 import { Header } from '../components';
 import { useNavigate, Link } from 'react-router-dom';
+import axios from "axios";
 
 const CreatePoliceStation = () => {
   
@@ -7,6 +8,29 @@ const CreatePoliceStation = () => {
   
     const handleBackClick = () => {
       navigate('/station');
+    };
+    const handleSubmit = async (e) => {
+      e.preventDefault();
+      
+      const formData = new FormData(e.target);
+      const name = formData.get('name');
+      const phone = formData.get('phone');
+      const address = formData.get('address');
+      const password = formData.get('password');
+    
+  
+      try {
+        await axios.post('http://localhost:5000/station/add', {
+          name,
+          phone,
+          address,
+          password,
+        });
+  
+        navigate('/station');
+      } catch (error) {
+        console.error(error);
+      }
     };
 
   return (
@@ -23,7 +47,7 @@ const CreatePoliceStation = () => {
           </button>
         </div>
 
-        <form className="space-y-2">
+        <form className="space-y-2" onSubmit={handleSubmit}>
           <div className="flex justify-end">
 
           </div>
@@ -54,13 +78,13 @@ const CreatePoliceStation = () => {
             />
           </div>
           <div className="flex flex-col">
-            <label htmlFor="email" className="font-bold">
-              Email
+            <label htmlFor="address" className="font-bold">
+              Address
             </label>
             <input
-              id="email"
-              name="email"
-              type="email"
+              id="address"
+              name="address"
+              type="address"
               className="border-2 rounded-md border-gray-300 p-2"
               placeholder="BaniGalaStation@example.com"
               required

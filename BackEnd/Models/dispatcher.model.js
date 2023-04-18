@@ -1,7 +1,7 @@
 import mongoose, { Schema } from "mongoose";
 const schema = mongoose.Schema;
 
-const dispatcherSchema = new schema({
+const dispatcherSchema = new Schema({
     username:{
         type: String,
         required: true,
