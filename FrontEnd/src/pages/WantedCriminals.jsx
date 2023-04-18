@@ -1,9 +1,11 @@
-import { useState } from "react";
+import { useState ,useEffect} from "react";
 import { Header } from "../components";
 import { useNavigate } from "react-router-dom";
 import UploadWantedCriminals from "./UploadWantedCriminals";
 import criminalImage from '../images/download (1).jpg';
 import criminalImage2 from '../images/citations.jpg';
+import axios from "axios";
+
 
 
 const WantedCriminals = () => {
@@ -14,44 +16,28 @@ const WantedCriminals = () => {
     navigate("/uploadcriminals");
   };
 
-    const [wantedCriminals, setWantedCriminals] = useState([
-      {
-        _id: 2,
-        name: "Dr Basit",
-        image: criminalImage2,
-        desc:"Database experts, hacks very heavy databases also sells students projects on fiverr."
-        
-      },
-      {
-        _id: 1,
-        name: "Bhola",
-        image: criminalImage,
-        desc: "Sells his property to have fun with Russian girl in 5000 dirham."
-        
-      },
+  const [wantedCriminals, setWantedCriminal] = useState([]);
      
 
- 
-    ]);
+
   
     const [showCreateForm, setShowCreateForm] = useState(false);
     
   // //check link
-  //   useEffect(() => {
-  //     axios.get("http://localhost:3001/api/policeOfficers").then((response) => {
-  //       setWantedCriminals(response.data);
-  //     });
-  //   }, []);
+     useEffect(() => {
+       axios.get("http://localhost:5000/wanted").then((response) => {
+         setWantedCriminal(response.data);
+       });
+     }, []);
   // //check link
-  //   const handleDelete = (id) => {
-  //     axios
-  //       .delete(`http://localhost:3001/api/policeOfficers/${id}`)
-  //       .then((response) => {
-  //         setWantedCriminals(
-  //           wantedCriminals.filter((officer) => officer._id !== id)
-  //         );
-  //       });
-  //   };
+  const handleDelete = (id) => {
+    axios.delete(`http://localhost:5000/wanted/${id}`)
+
+      .then((response) => {
+        setWantedCriminal(wantedCriminals.filter((wanted) => wanted._id !== id));
+
+      });
+  };
   
     // const handleUpdate = (id) => {
     //   navigate(`/wantedCriminals/${id}/edit`);
@@ -92,8 +78,10 @@ const WantedCriminals = () => {
                   type="button"
                   className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
                   // onClick={() => handleDelete(criminal._id)}
+                  onClick={() => handleDelete(criminal._id)}
                 >
                   Delete
+                 
                 </button>
               </div>
             </div>

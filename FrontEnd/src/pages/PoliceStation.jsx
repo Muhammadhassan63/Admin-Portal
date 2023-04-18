@@ -32,14 +32,14 @@ const PoliceStation = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    axios.get("http://localhost:3001/api/police-stations").then((response) => {
+    axios.get("http://localhost:5000/station").then((response) => {
       setPoliceStations(response.data);
     });
   }, []);
 
   const handleDelete = (id) => {
     axios
-      .delete(`http://localhost:3001/api/police-stations/${id}`)
+      .delete(`http://localhost:5000/station/${id}`)
       .then((response) => {
         setPoliceStations(
           policeStations.filter((policestation) => policestation._id !== id)
