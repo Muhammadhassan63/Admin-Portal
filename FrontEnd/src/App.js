@@ -12,6 +12,7 @@ import CreatePoliceStation from './pages/CreatePoliceStation';
 import CreatePoliceOfficer from './pages/CreatePoliceOfficer';
 import UploadWantedCriminals from './pages/UploadWantedCriminals';
 import PopupMessage from './components/PopupMessage';
+import UpdateDispatcher from './pages/UpdateDispatcher';
 
 const App = () => {
   const { setCurrentColor, setCurrentMode, currentMode, activeMenu, currentColor, themeSettings, setThemeSettings } = useStateContext();
@@ -89,6 +90,11 @@ const App = () => {
                 <Route path="/createofficer" element={<CreatePoliceOfficer />} />
                 <Route path="/uploadcriminals" element={<UploadWantedCriminals />} />
                 <Route path="/message" element={<PopupMessage />} />
+                <Route path='/dispatcher/update/:id' element={<UpdateDispatcher />} />
+
+                
+                
+
 
          
               </Routes>

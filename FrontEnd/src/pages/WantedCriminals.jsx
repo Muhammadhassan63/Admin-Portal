@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import UploadWantedCriminals from "./UploadWantedCriminals";
 import criminalImage from '../images/download (1).jpg';
 import criminalImage2 from '../images/citations.jpg';
+import criminalImage3 from '../images/Fkp2w46aMAAtpwu.jpg'
 
 
 const WantedCriminals = () => {
@@ -27,6 +28,13 @@ const WantedCriminals = () => {
         name: "Bhola",
         image: criminalImage,
         desc: "Sells his property to have fun with Russian girl in 5000 dirham."
+        
+      },
+      {
+        _id: 1,
+        name: "Sam",
+        image: criminalImage3,
+        desc: "Dont perform but takes money."
         
       },
      

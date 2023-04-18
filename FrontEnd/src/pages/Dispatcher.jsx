@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import CreateDispatcher from "./CreateDispatcher.jsx";
 
+
 const Dispatcher = () => {
   //const [dispatchers, setDispatchers] = useState([]);(add this to get dynamic data)
   const [dispatchers, setDispatchers] = useState([
@@ -50,16 +51,12 @@ const Dispatcher = () => {
   };
 
   const handleUpdate = (id) => {
-    navigate(`/dispatchers/update/${id}`);
+    navigate(`/dispatcher/update/${id}`);
   };
 
   const handleCreate = () => {
     navigate("/dispatchercreate");
   };
-
-  const formatHeaderText = (headerText) => (
-    <span className="font-bold text-green-600 text-lg">{headerText}</span>
-  );
 
   return (
     <div className="m-2 md:m-10 mt-24 p-2 md:p-10 bg-white rounded-3xl " >
