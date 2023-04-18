@@ -78,8 +78,5 @@ const WantedCriminals = () => {
   );
 };
 
-<<<<<<< HEAD
+
 export default WantedCriminals
-=======
-export default WantedCriminals
->>>>>>> 33b888126b882e075f1f0d718eaf43ac852748ba

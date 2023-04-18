@@ -48,7 +48,7 @@ const PoliceStation = () => {
   };
 
   const handleUpdate = (id) => {
-    navigate(`/stations/${id}/edit`);
+    navigate(`/station/update/${id}`);
   };
 
   const handleCreate = () => {
