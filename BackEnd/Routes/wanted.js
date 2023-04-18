@@ -1,20 +1,22 @@
 import express from "express";
-import fileUpload from "express-fileupload";
+import multer from "multer";
 import { wantedCriminal } from "../Models/wanted.model.js";
 
 const router = express.Router();
-router.use(fileUpload());
+
+const upload = multer();
 
 router.route("/").get((req, res) => {
   wantedCriminal
-    .find()
+    .findById()
     .then((criminals) => res.json(criminals))
     .catch((err) => res.status(400).json("Error: " + err));
 });
 
-router.route("/add").post((req, res) => {
+
+router.route("/add").post(upload.single("image"), (req, res) => {
   const name = req.body.name;
-  const image = req.files.image.data.toString("base64");
+  const image = req.file.buffer.toString("base64");
   const description = req.body.description;
   const newCrime = new wantedCriminal({ name, image, description });
   newCrime

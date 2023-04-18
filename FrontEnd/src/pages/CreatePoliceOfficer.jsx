@@ -25,7 +25,6 @@ const CreatePoliceOfficer = () => {
           phone,
           email,
           password,
-          Location
         });
   
         navigate('/officer');
@@ -39,7 +38,7 @@ const CreatePoliceOfficer = () => {
     
       <div className="m-2 md:m-10 mt-24 p-2 md:p-10 bg-white rounded-3xl">
         
-        <Header title="Create Dispatcher" />
+        <Header title="Create Police Officer" />
         <div className="bg-white rounded-lg p-8">
         <div className="flex justify-end mb-4">
             <button
@@ -104,17 +103,7 @@ const CreatePoliceOfficer = () => {
                 className="border-2 rounded-md border-gray-300 p-2"
                 required
               />
-              <label htmlFor="Location" className="font-bold">
-                Location
-              </label>
-              <input
-                id="Location"
-                name="Location"
-                type="text"
-                className="border-2 rounded-md border-gray-300 p-2 "
-                placeholder="Sani"
-                required
-              />
+              
               
             </div>
             <div className="flex justify-left">

@@ -10,24 +10,7 @@ const Dispatcher = () => {
   //const [dispatchers, setDispatchers] = useState([]);(add this to get dynamic data)
   const [dispatchers, setDispatchers] = useState([
     
-    {
-      _id: 1,
-      name: "Hassan",
-      email: "hassan@example.com",
-      phone: "555-1234",
-    },
-    {
-      _id: 2,
-      name: "Peters",
-      email: "peters@example.com",
-      phone: "555-5678",
-    },
-    {
-      _id: 3,
-      name: "sanaullah",
-      email: "sanaullah@example.com",
-      phone: "555-9012",
-    },
+    {},
   ]);
 
   const [showCreateForm, setShowCreateForm] = useState(false);
@@ -99,7 +82,7 @@ const Dispatcher = () => {
             </div>
             <div>{dispatcher.name}</div>
             <div>{dispatcher.email}</div>
-            <div>{dispatcher.description}</div>
+            <div>{dispatcher.phone}</div>
           </div>
         ))}
       </div>
