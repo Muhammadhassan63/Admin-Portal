@@ -1,35 +1,44 @@
-import { useState ,useEffect} from "react";
+import { useState, useEffect } from "react";
 import { Header } from "../components";
 import { useNavigate } from "react-router-dom";
 import UploadWantedCriminals from "./UploadWantedCriminals";
 import axios from "axios";
 
-
 const WantedCriminals = () => {
   const navigate = useNavigate();
-  
 
   const handleCreate = () => {
     navigate("/uploadcriminals");
   };
 
-  const [wantedCriminals, setWantedCriminal] = useState([]);
-     
+  const [wantedCriminals, setWantedCriminals] = useState([]);
+
   useEffect(() => {
-    axios.get("http://localhost:5000/wanted").then((response) => {
-      setWantedCriminal(response.data);
-    });
+    axios
+      .get("http://localhost:5000/wanted")
+      .then((response) => {
+        setWantedCriminals(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   }, []);
 
   const handleDelete = (id) => {
-    axios.delete(`http://localhost:5000/wanted/${id}`)
+    axios
+      .delete(`http://localhost:5000/wanted/${id}`)
       .then((response) => {
-        setWantedCriminal(wantedCriminals.filter((wanted) => wanted._id !== id));
+        setWantedCriminals((prev) =>
+          prev.filter((wanted) => wanted._id !== id)
+        );
+      })
+      .catch((error) => {
+        console.log(error);
       });
   };
 
   const [showCreateForm, setShowCreateForm] = useState(false);
-    
+
   return (
     <div className="m-2 md:m-10 mt-24 p-2 md:p-10 bg-white rounded-3xl">
       <Header category="Page" title="Wanted Criminals" />
@@ -43,11 +52,9 @@ const WantedCriminals = () => {
         </button>
       </div>
 
-      {showCreateForm && (
-        <UploadWantedCriminals setShowCreateForm={setShowCreateForm} />
-      )}
+      {showCreateForm && <UploadWantedCriminals setShowCreateForm={setShowCreateForm} />}
       <div className="flex flex-col space-y-4">
-        {wantedCriminals.map((criminal) => (
+        {wantedCriminals && wantedCriminals.map((criminal) => (
           <div key={criminal._id} className="bg-gray-100 p-4 rounded">
             <div className="flex justify-between">
               <div className="flex space-x-4">
@@ -66,11 +73,20 @@ const WantedCriminals = () => {
                 </button>
               </div>
             </div>
-            
-            <div className="mt-4"><img src={`data:image/jpeg;base64,${criminal.image}`} alt={`Photo of ${criminal.name}`} className="w-32 h-32 rounded-lg" /></div>
-            <div className="font-bold text-lg mt-2">Name: <span className="font-light">{criminal.name}</span></div>
-            <div className="font-bold text-lg mt-2">Description: <span className="font-light">{criminal.description}</span></div>
 
+            <div className="mt-4">
+              <img
+                src={`data:image/jpeg;base64,${criminal.image}`}
+                alt={`Photo of ${criminal.name}`}
+                className="w-32 h-32 rounded-lg"
+              />
+            </div>
+            <div className="font-bold text-lg mt-2">
+              Name: <span className="font-light">{criminal.name}</span>
+            </div>
+            <div className="font-bold text-lg mt-2">
+              Description: <span className="font-light">{criminal.description}</span>
+            </div>
           </div>
         ))}
       </div>
@@ -78,4 +94,4 @@ const WantedCriminals = () => {
   );
 };
 
-export default WantedCriminals
+export default WantedCriminals;

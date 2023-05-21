@@ -8,7 +8,7 @@ const upload = multer();
 
 router.route("/").get((req, res) => {
   wantedCriminal
-    .findById()
+    .find()
     .then((criminals) => res.json(criminals))
     .catch((err) => res.status(400).json("Error: " + err));
 });

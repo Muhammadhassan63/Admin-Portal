@@ -7,6 +7,7 @@ import dispatcherRoute from './Routes/dispatcher.js';
 import officerRoute from './Routes/policeofficer.js';
 import stationRoute from './Routes/policestation.js';
 import wantedRoute from './Routes/wanted.js';
+import dispatcherreportRoute from './Routes/crimereportdispatcher.js';
 // Configuring the server
 dotenv.config();
 const app = express();
@@ -22,6 +23,7 @@ app.use("/dispatcher", dispatcherRoute);
 app.use("/officer", officerRoute);
 app.use("/station", stationRoute);
 app.use("/wanted", wantedRoute);
+app.use('/dispatcherreport',dispatcherreportRoute)
 
 //DB connection
 const PORT = process.env.PORT || 9000;
